@@ -1,0 +1,17 @@
+name: dryrot
+channels:
+  - anaconda
+  - defaults
+dependencies:
+  - python=3.6
+  - opencv
+  - tensorflow-gpu
+  - numpy
+  - pandas
+  - matplotlib
+  - cython
+  - cartopy
+  - h5py
+  - scikit-learn
+  - plotly
+  - pip
