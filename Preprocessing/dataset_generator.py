@@ -6,8 +6,8 @@ import multiprocessing
 import math
 import argparse
 import h5py
-from skimage.io import imread
-from skimage.transform import resize
+# from skimage.io import imread
+# from skimage.transform import resize
 
 PROB_NON_DRYROT = 1
 

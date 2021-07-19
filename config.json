@@ -1,8 +1,7 @@
 {
-    "datasets": "/space/ariyanzarei/dry_rot/datasets/full_datasets",
-    "models": "/space/ariyanzarei/dry_rot/models",
-    "results": "/space/ariyanzarei/dry_rot/results",
-    "settings": "/space/ariyanzarei/dry_rot/settings",
-    "plots": "/space/ariyanzarei/dry_rot/plots"
-  }
-  
+  "datasets": "/home/ariyan/data/dry_rot/datasets",
+  "models": "/home/ariyan/data/dry_rot/models",
+  "results": "/home/ariyan/data/dry_rot/results",
+  "settings": "/home/ariyan/data/dry_rot/settings",
+  "plots": "/home/ariyan/data/dry_rot/plots"
+}
