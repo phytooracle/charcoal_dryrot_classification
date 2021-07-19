@@ -1,5 +1,6 @@
 import itertools
 import json
+import socket
 
 def generate_exp_UNET(model_name):
     
@@ -78,6 +79,40 @@ def generate_exp_ResNet(model_name):
 
     return final_experiments
 
+def generate_exp_MobileNetV1(model_name):
+
+    input_shape_values = [[256,256,3]]
+    lr_values = [1e-3]
+    optimizer_values = ["Adam"]
+    loss_values = ["categorical_crossentropy"]
+    epochs_values = [5]
+    batch_size_values = [16]
+    patience_values = [20]
+
+    experiments = list(itertools.product(input_shape_values,lr_values,optimizer_values,loss_values,\
+            epochs_values,batch_size_values,patience_values))
+
+    final_experiments = {}
+
+    for i,e in enumerate(experiments):
+        new_e = list(e)
+        
+        name = model_name+"_"+str(i)
+        final_experiments[name] = {\
+            "input_shape": new_e[0],\
+            "lr": new_e[1],\
+            "optimizer":new_e[2],\
+            "loss": new_e[3],\
+            "epochs":new_e[4],\
+            "batch_size":new_e[5],\
+            "patience":new_e[6]
+            }
+
+    print(":: Number of total experiments: "+str(len(final_experiments)))
+
+    return final_experiments
+
+
 def save_settings(final_experiments,path):
 
     with open(path,"w") as f:
@@ -87,14 +122,16 @@ def load_config(path):
     
     with open(path,"r") as f:
         config = json.load(f)
-
-    return config
+    
+    return config[socket.gethostname()]
 
 config = load_config("../config.json")
 
 exp_UNET = generate_exp_UNET("UNET")
 exp_ResNET = generate_exp_ResNet("ResNET")
+exp_MobileNETV1 = generate_exp_MobileNetV1("MobileNETV1")
 
 save_settings(exp_UNET,config['settings']+"/experiments_UNET.json")
 save_settings(exp_ResNET,config['settings']+"/experiments_ResNET.json")
+save_settings(exp_MobileNETV1,config['settings']+"/experiments_MobileNETV1.json")
 

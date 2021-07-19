@@ -24,6 +24,21 @@ class ResNet:
 
         self.model = model
 
+class MobileNetV1:
+
+    def __init__(self,dic):
+
+        model = tf.keras.applications.mobilenet.MobileNet(include_top=True, weights=None, input_shape=dic['input_shape'], pooling=None, classes=2)
+
+        opt = eval(dic['optimizer'])
+
+        loss = dic['loss']
+        
+        model.compile(optimizer=opt(dic['lr']), loss=loss,
+                      metrics=['accuracy'])
+
+        self.model = model
+
 class UNET:
 
     def __init__(self, dic):
@@ -105,20 +120,23 @@ class UNET:
         
         self.model = model
 
-# test_dic = {
-#     'input_shape':[256,256,3],
-#     'start_filter':64,
-#     'conv_kernel_size':3,
-#     'activation':'relu',
-#     'dr_rate':0.2,
-#     'deconv_kernel_size':3,
-#     'optimizer':'SGD',
-#     'loss':'binary_crossentropy',
-#     'lr':0.001
-# }
+test_dic = {
+    'input_shape':[256,256,3],
+    'start_filter':64,
+    'conv_kernel_size':3,
+    'activation':'relu',
+    'dr_rate':0.2,
+    'deconv_kernel_size':3,
+    'optimizer':'SGD',
+    'loss':'binary_crossentropy',
+    'lr':0.001
+}
 
-# # unet = UNET(test_dic)
-# # unet.model.summary()
+# unet = UNET(test_dic)
+# unet.model.summary()
 
 # resnet = ResNet(test_dic)
 # resnet.model.summary()
+
+resnet = MobileNetV1(test_dic)
+resnet.model.summary()

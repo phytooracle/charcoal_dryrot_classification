@@ -5,9 +5,10 @@ from numpy.core.fromnumeric import trace
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.callbacks import EarlyStopping
-from Models import ResNet,UNET
+from Models import ResNet,UNET,MobileNetV1
 sys.path.append("/work/ariyanzarei/Charcoal_Dry_Rot")
 from Preprocessing.dataset_generator import load_dataset
+import socket
 
 def get_args():
     parser = argparse.ArgumentParser(
@@ -27,7 +28,7 @@ def load_config(path):
     with open(path,"r") as f:
         config = json.load(f)
 
-    return config
+    return config[socket.gethostname()]
     
 def create_and_train_model(experiment_name, dic):
     
@@ -38,6 +39,10 @@ def create_and_train_model(experiment_name, dic):
     elif experiment_name.split('_')[0] == 'ResNET':
         model = ResNet(dic['experiments'][experiment_name]).model
         data = load_dataset(dic['directories']['datasets'],'classification',1000)
+
+    elif experiment_name.split('_')[0] == 'MobileNETV1':
+        model = MobileNetV1(dic['experiments'][experiment_name]).model
+        data = load_dataset(dic['directories']['datasets'],'classification',1000)
     
     model.summary()
 
@@ -46,7 +51,7 @@ def create_and_train_model(experiment_name, dic):
     X_val = data['X_val']
     Y_val = data['Y_val']
 
-    if experiment_name.split('_')[0] == 'ResNET':
+    if experiment_name.split('_')[0] == 'ResNET' or experiment_name.split('_')[0] == 'MobileNETV1':
 
         pos = np.sum(data['Y_train'])
         total = data['Y_train'].shape[0]
