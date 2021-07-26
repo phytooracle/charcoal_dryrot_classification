@@ -7,6 +7,7 @@ import numpy as np
 import os
 from tensorflow.keras.callbacks import EarlyStopping
 from Models import ResNet,UNET
+import socket
 # sys.path.append("/work/ariyanzarei/Charcoal_Dry_Rot")
 sys.path.append("/home/ariyan/projects/dry_rot/code/Charcoal_Dry_Rot")
 from Preprocessing.dataset_generator import load_dataset
@@ -31,7 +32,7 @@ def load_config(path):
     with open(path,"r") as f:
         config = json.load(f)
 
-    return config
+    return config['ariyan-Jetson']
     
 
 def main():
@@ -49,7 +50,7 @@ def main():
             print(gpus)
             tf.config.experimental.set_virtual_device_configuration(
                 gpus[0],
-                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=2048)])
+                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
             logical_gpus = tf.config.experimental.list_logical_devices('GPU')
             print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
         except RuntimeError as e:
