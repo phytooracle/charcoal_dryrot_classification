@@ -1,3 +1,4 @@
+import os
 import argparse
 import sys
 import json
@@ -6,10 +7,10 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.callbacks import EarlyStopping
 from Models import ResNet,UNET,MobileNetV1
-sys.path.append("/work/ariyanzarei/Charcoal_Dry_Rot")
+cwd = os.getcwd()
+sys.path.append(os.path.join(cwd.split("Charcoal_Dry_Rot")[0],"Charcoal_Dry_Rot"))
 from Preprocessing.dataset_generator import load_dataset
 import socket
-import os
 os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 
