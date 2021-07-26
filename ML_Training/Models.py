@@ -43,7 +43,7 @@ class MobileNetV2:
 
     def __init__(self,dic):
 
-        model = tf.keras.applications.mobilenet.MobileNetV2(include_top=True, weights=None, input_shape=dic['input_shape'], pooling=None, classes=2)
+        model = tf.keras.applications.mobilenet_v2.MobileNetV2(include_top=True, weights=None, input_shape=dic['input_shape'], pooling=None, classes=2)
 
         opt = eval(dic['optimizer'])
 

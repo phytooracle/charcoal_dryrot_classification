@@ -6,12 +6,12 @@ from numpy.core.fromnumeric import trace
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.callbacks import EarlyStopping
-from Models import ResNet,UNET,MobileNetV1
+from Models import ResNet,UNET,MobileNetV1, MobileNetV2
 cwd = os.getcwd()
 sys.path.append(os.path.join(cwd.split("Charcoal_Dry_Rot")[0],"Charcoal_Dry_Rot"))
 from Preprocessing.dataset_generator import load_dataset
 import socket
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+# os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 
 def get_args():
@@ -43,15 +43,19 @@ def create_and_train_model(experiment_name, dic):
     
     if experiment_name.split('_')[0] == 'UNET':
         model = UNET(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'segmentation',10000)
+        data = load_dataset(dic['directories']['datasets'],'segmentation',100000)
     
     elif experiment_name.split('_')[0] == 'ResNET':
         model = ResNet(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'classification',10000)
+        data = load_dataset(dic['directories']['datasets'],'classification',100000)
 
     elif experiment_name.split('_')[0] == 'MobileNETV1':
         model = MobileNetV1(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'classification',10000)
+        data = load_dataset(dic['directories']['datasets'],'classification',100000)
+
+    elif experiment_name.split('_')[0] == 'MobileNETV2':
+        model = MobileNetV2(dic['experiments'][experiment_name]).model
+        data = load_dataset(dic['directories']['datasets'],'classification',100000)
     
     model.summary()
 
@@ -60,7 +64,8 @@ def create_and_train_model(experiment_name, dic):
     X_val = data['X_val']
     Y_val = data['Y_val']
 
-    if experiment_name.split('_')[0] == 'ResNET' or experiment_name.split('_')[0] == 'MobileNETV1':
+    if experiment_name.split('_')[0] == 'ResNET' or experiment_name.split('_')[0] == 'MobileNETV1'\
+        or experiment_name.split('_')[0] == 'MobileNETV2':
 
         pos = np.sum(data['Y_train'])
         total = data['Y_train'].shape[0]
