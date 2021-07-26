@@ -9,6 +9,9 @@ from Models import ResNet,UNET,MobileNetV1
 sys.path.append("/work/ariyanzarei/Charcoal_Dry_Rot")
 from Preprocessing.dataset_generator import load_dataset
 import socket
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
+
 
 def get_args():
     parser = argparse.ArgumentParser(
@@ -34,15 +37,15 @@ def create_and_train_model(experiment_name, dic):
     
     if experiment_name.split('_')[0] == 'UNET':
         model = UNET(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'segmentation',1000)
+        data = load_dataset(dic['directories']['datasets'],'segmentation',10000)
     
     elif experiment_name.split('_')[0] == 'ResNET':
         model = ResNet(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'classification',1000)
+        data = load_dataset(dic['directories']['datasets'],'classification',10000)
 
     elif experiment_name.split('_')[0] == 'MobileNETV1':
         model = MobileNetV1(dic['experiments'][experiment_name]).model
-        data = load_dataset(dic['directories']['datasets'],'classification',1000)
+        data = load_dataset(dic['directories']['datasets'],'classification',10000)
     
     model.summary()
 

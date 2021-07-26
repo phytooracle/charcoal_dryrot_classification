@@ -6,6 +6,13 @@
     "settings": "/space/ariyanzarei/dry_rot/settings",
     "plots": "/space/ariyanzarei/dry_rot/plots"
   },
+  "gauss":{
+    "datasets": "/space/ariyanzarei/dry_rot/datasets/full_datasets",
+    "models": "/space/ariyanzarei/dry_rot/models",
+    "results": "/space/ariyanzarei/dry_rot/results",
+    "settings": "/space/ariyanzarei/dry_rot/settings",
+    "plots": "/space/ariyanzarei/dry_rot/plots"
+  },
   "ariyan-Jetson":{
     "datasets": "/home/ariyan/data/dry_rot/datasets",
     "models": "/home/ariyan/data/dry_rot/models",

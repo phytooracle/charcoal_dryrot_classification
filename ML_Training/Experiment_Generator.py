@@ -52,7 +52,7 @@ def generate_exp_ResNet(model_name):
     lr_values = [1e-3]
     optimizer_values = ["Adam"]
     loss_values = ["categorical_crossentropy"]
-    epochs_values = [10]
+    epochs_values = [20]
     batch_size_values = [16]
     patience_values = [20]
 
@@ -85,7 +85,7 @@ def generate_exp_MobileNetV1(model_name):
     lr_values = [1e-3]
     optimizer_values = ["Adam"]
     loss_values = ["categorical_crossentropy"]
-    epochs_values = [5]
+    epochs_values = [20]
     batch_size_values = [16]
     patience_values = [20]
 
@@ -111,7 +111,6 @@ def generate_exp_MobileNetV1(model_name):
     print(":: Number of total experiments: "+str(len(final_experiments)))
 
     return final_experiments
-
 
 def save_settings(final_experiments,path):
 
