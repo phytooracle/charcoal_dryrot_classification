@@ -122,7 +122,12 @@ def load_config(path):
     with open(path,"r") as f:
         config = json.load(f)
     
-    return config[socket.gethostname()]
+    host_name = socket.gethostname()
+
+    if "hpc" in host_name:
+        host_name = "hpc"
+
+    return config[host_name]
 
 config = load_config("../config.json")
 

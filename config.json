@@ -19,5 +19,12 @@
     "results": "/home/ariyan/data/dry_rot/results",
     "settings": "/home/ariyan/data/dry_rot/settings",
     "plots": "/home/ariyan/data/dry_rot/plots"
+  },
+  "hpc":{
+    "datasets": "/xdisk/kobus/ariyanzarei/charcoal_dryrot/dataset",
+    "models": "/xdisk/kobus/ariyanzarei/charcoal_dryrot/models",
+    "results": "/xdisk/kobus/ariyanzarei/charcoal_dryrot/results",
+    "settings": "/xdisk/kobus/ariyanzarei/charcoal_dryrot/settings",
+    "plots": "/xdisk/kobus/ariyanzarei/charcoal_dryrot/plots"
   }
 }
