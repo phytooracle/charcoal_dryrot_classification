@@ -13,9 +13,9 @@ def generate_exp_UNET(model_name):
     optimizer_values = ["Adam"]
     loss_values = ["weighted_dice_coef"]
     lr_values = [1e-3]
-    epochs_values = [10]
+    epochs_values = [50]
     batch_size_values = [8]
-    patience_values = [20]
+    patience_values = [50]
 
     experiments = list(itertools.product(input_shape_values,start_filter_values,conv_kernel_size_values,\
         activation_values,drop_out_rate_values,deconv_kernel_size_values,optimizer_values,loss_values,lr_values,\
@@ -52,9 +52,9 @@ def generate_exp_ResNet(model_name):
     lr_values = [1e-3]
     optimizer_values = ["Adam"]
     loss_values = ["categorical_crossentropy"]
-    epochs_values = [10]
+    epochs_values = [50]
     batch_size_values = [16]
-    patience_values = [20]
+    patience_values = [50]
 
     experiments = list(itertools.product(input_shape_values,lr_values,optimizer_values,loss_values,\
             epochs_values,batch_size_values,patience_values))
@@ -85,9 +85,9 @@ def generate_exp_MobileNetV1(model_name):
     lr_values = [1e-3]
     optimizer_values = ["Adam"]
     loss_values = ["categorical_crossentropy"]
-    epochs_values = [10]
+    epochs_values = [50]
     batch_size_values = [16]
-    patience_values = [20]
+    patience_values = [50]
 
     experiments = list(itertools.product(input_shape_values,lr_values,optimizer_values,loss_values,\
             epochs_values,batch_size_values,patience_values))
@@ -118,9 +118,9 @@ def generate_exp_MobileNetV2(model_name):
     lr_values = [1e-3]
     optimizer_values = ["Adam"]
     loss_values = ["categorical_crossentropy"]
-    epochs_values = [10]
+    epochs_values = [50]
     batch_size_values = [16]
-    patience_values = [20]
+    patience_values = [50]
 
     experiments = list(itertools.product(input_shape_values,lr_values,optimizer_values,loss_values,\
             epochs_values,batch_size_values,patience_values))
