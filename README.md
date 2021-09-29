@@ -2,4 +2,4 @@
 This repository contains codes, scripts and link to the dataset for the charcoal dry rot classification project. There are scripts available for preprocessing images, training and testing models.
 
 # Data
-The raw annotated images as well as the preprocessed and cropped out patches for classification are available at 
+The raw images as well as the annoted masks are available at XXX. You can use the scripts in the preprocessing folder to prepare the dataset for training classification models.  
