@@ -2,7 +2,8 @@
 This repository contains codes, scripts and link to the dataset for the charcoal dry rot classification project. There are scripts available for preprocessing images, training and testing models.
 
 # Data
-The raw images as well as the annoted masks are available at XXX. You can use the scripts in the preprocessing folder to prepare the dataset for training classification models. 
+The raw images as well as the annoted masks are available at https://data.cyverse.org/dav-anon/iplant/home/ariyanzarei/dry_rot_raw.tar.gz
+. You can use the scripts in the preprocessing folder to prepare the dataset for training classification models. 
 
 # Code
 The following explains how to prepare data and train models. 
